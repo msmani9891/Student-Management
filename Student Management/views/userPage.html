@@ -1,0 +1,546 @@
+<div class="container" xmlns="http://www.w3.org/1999/html" xmlns="http://www.w3.org/1999/html">
+
+<div class="alert alert-{{alertClass}} alert-dismissible" role="alert" id="multiPurposeAlert">
+    <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span
+            class="sr-only">Close</span></button>
+    <strong>{{alertClass | uppercase}}!</strong> {{alertText}}.
+</div>
+
+
+
+<div class="container">
+
+  <ul class="nav nav-tabs">
+    <li class="active"><a data-toggle="tab" data-href="#Students" data-target="#Students">Students</a></li>
+    <li><a data-toggle="tab" data-href="#menu1" data-target="#menu1">staffs</a></li>
+    <li><a data-toggle="tab" data-href="#menu2" data-target="#menu2">Technologies</a></li>
+  </ul>
+
+  <div class="tab-content">
+    <div id="Students" class="tab-pane fade in active">
+      <div>
+          <div class="input-group col-lg-4 searchBox pull-right">
+              <input type="search" class="form-control" placeholder="Search Students.." ng-model="searchEmp"/>
+                  <span class="input-group-btn">
+                      <button class="btn btn-default" type="button"><i class="glyphicon glyphicon-search"></i>
+                      </button>
+                  </span>
+          </div>
+           <div class="col-lg-4 pull-right">
+               <strong class="sortByText">Sort by</strong>
+               <select ng-model="empOrderBy" class="styled-select sortList">
+                   <option value="name">Name</option>
+                   <option value="stuid">Stu Id</option>
+                   <option value="Deprtment">Deprtment</option>
+                   <option value="section">section</option>
+                   <option value="email">Email</option>
+                   <option value="phone">Phone</option>
+                   <option value="dob">DOB</option>
+               </select>
+           </div>
+      </div>
+
+
+      <div class="clearfix"></div>
+      <button class="btn btn-sm btn-primary pull-right myBtn2" ng-click="addNewRecord('Students')"><i
+              class="glyphicon glyphicon-plus"></i>&nbsp; Add Student
+      </button>
+      <button class="btn btn-sm btn-primary pull-right myBtn2"
+              ng-click="cancelMultipleRecords('Students');toggleBtnEmp=!toggleBtnEmp;"
+              ng-show="toggleBtnEmp">
+          <i class="glyphicon glyphicon-remove"></i>&nbsp; Cancel
+      </button>
+      <button class="btn btn-sm btn-danger pull-right myBtn2"
+              ng-click="deleteMultipleRecords('Students');toggleBtnEmp=!toggleBtnEmp;"
+              ng-show="toggleBtnEmp">
+          <i class="glyphicon glyphicon-trash"></i>&nbsp; Delete Marked
+      </button>
+
+      <div class="clearfix"></div>
+
+                <div class="panel-group" ng-repeat="x in Students  | filter:{name:searchEmp} track by $index" class="row">
+                <!-- First Panel -->
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                         <h4 class="panel-title"
+                             data-toggle="collapse"
+                             data-target="#collapse{{$index}}" data-href='#collapse{{$index}}'>
+                             {{$index + 1}}.&nbsp; {{x.name}}
+                         </h4>
+                    </div>
+                    <div id="collapse{{$index}}" class="panel-collapse collapse">
+                        <div class="panel-body">
+                          <div>
+                              <strong class="col-sm-6">Name </strong><i class="col-sm-6">{{x.name}}</i>
+                              <strong class="col-sm-6">Emp Id </strong><i class="col-sm-6">{{x.stuid}}</i>
+                              <strong class="col-sm-6">Deprtment </strong><i class="col-sm-6">{{x.Deprtment}}</i>
+                              <strong class="col-sm-6">section </strong><i class="col-sm-6">{{x.section}}</i>
+                              <strong class="col-sm-6">Email </strong><i class="col-sm-6">{{x.email}}</i>
+                              <strong class="col-sm-6">Phone </strong><i class="col-sm-6">{{x.phone}}</i>
+                              <strong class="col-sm-6">DOB </strong><i class="col-sm-6">{{x.dob}}</i>
+
+                              <button class="btn btn-sm btn-danger pull-right myBtn"
+                                      ng-click="deleteRecord('Students',x)">
+                                  <i class="glyphicon glyphicon-trash"></i>&nbsp; Delete
+                              </button>
+                              <button class="btn btn-sm btn-primary pull-right myBtn"
+                                      ng-click="openEditModal('Students',$index)">
+                                  <i class="glyphicon glyphicon-edit"></i>&nbsp; Edit
+                              </button>
+
+                          </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <!-- <div class='' ng-if="Students.length == 0"></div> -->
+            <div ng-show="!(Students | filter:nameText).length">No Tag Found</div
+            
+    </div>
+    <div id="menu1" class="tab-pane fade">
+      <div>
+          <div class="input-group col-lg-4 searchBox pull-right">
+              <input type="search" class="form-control" placeholder="Search staffs.." ng-model="searchProj"/>
+                  <span class="input-group-btn">
+                      <button class="btn btn-default" type="button"><i class="glyphicon glyphicon-search"></i>
+                      </button>
+                  </span>
+          </div>
+          <div class="col-lg-4 pull-right">
+              <strong class="sortByText">Sort by</strong>
+              <select ng-model="projOrderBy" class="styled-select sortList">
+                  <option value="staffs">staffs</option>
+                  <option value="dept">dept</option>
+                  <option value="experience">experience</option>
+                  <option value="designation">designation</option>
+              </select>
+          </div>
+      </div>
+
+
+      <div class="clearfix"></div>
+      <button class="btn btn-sm btn-primary pull-right myBtn2" ng-click="addNewRecord('staffs')"><i
+              class="glyphicon glyphicon-plus"></i>&nbsp; Add staff
+      </button>
+      <button class="btn btn-sm btn-primary pull-right myBtn2"
+              ng-click="cancelMultipleRecords('staffs');toggleBtnEmp=!toggleBtnEmp;"
+              ng-show="toggleBtnProj">
+          <i class="glyphicon glyphicon-remove"></i>&nbsp; Cancel
+      </button>
+      <button class="btn btn-sm btn-danger pull-right myBtn2"
+              ng-click="deleteMultipleRecords('staffs');toggleBtnEmp=!toggleBtnProj;"
+              ng-show="toggleBtnProj">
+          <i class="glyphicon glyphicon-trash"></i>&nbsp; Delete Marked
+      </button>
+
+      <div class="clearfix"></div>
+
+                <div class="panel-group" ng-repeat="x in staffs | filter:searchProj" class="row">
+                <!-- First Panel -->
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                         <h4 class="panel-title"
+                             data-toggle="collapse"
+                             data-target="#Projcollapse{{$index}}" data-href='#Projcollapse{{$index}}'>
+                             {{$index + 1}}.&nbsp; {{x.staff}}
+                         </h4>
+                    </div>
+                    <div id="Projcollapse{{$index}}" class="panel-collapse collapse">
+                        <div class="panel-body">
+                          <div>
+                            <strong class="col-sm-6">staff </strong><i class="col-sm-6">{{x.staff}}</i>
+                            <strong class="col-sm-6">dept </strong><i class="col-sm-6">{{x.dept}}</i>
+                            <strong class="col-sm-6">experience </strong><i class="col-sm-6">{{x.experience}}</i>
+                            <strong class="col-sm-6">designation </strong><i class="col-sm-6">{{x.designation}}</i>
+
+                              <button class="btn btn-sm btn-danger pull-right myBtn"
+                                      ng-click="deleteRecord('staffs',x)">
+                                  <i class="glyphicon glyphicon-trash"></i>&nbsp; Delete
+                              </button>
+                              <button class="btn btn-sm btn-primary pull-right myBtn"
+                                      ng-click="openEditModal('staffs',$index)">
+                                  <i class="glyphicon glyphicon-edit"></i>&nbsp; Edit
+                              </button>
+
+                          </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            
+    </div>
+    <div id="menu2" class="tab-pane fade">
+      <div>
+          <div class="input-group col-lg-4 searchBox pull-right">
+              <input type="search" class="form-control" placeholder="Search.." ng-model="searchTech"/>
+                  <span class="input-group-btn">
+                      <button class="btn btn-default" type="button"><i class="glyphicon glyphicon-search"></i>
+                      </button>
+                  </span>
+          </div>
+          <div class="col-lg-4 pull-right">
+              <strong class="sortByText">Sort by</strong>
+              <select ng-model="techOrderBy" class="styled-select sortList">
+                  <option value="subject">Subject</option>
+                  <option value="version">Year</option>
+                  <option value="designation">Book Referal</option>
+                  <option value="usingin">Staff</option>
+              </select>
+          </div>
+      </div>
+
+
+      <div class="clearfix"></div>
+      <button class="btn btn-sm btn-primary pull-right myBtn2" ng-click="addNewRecord('subject')"><i
+              class="glyphicon glyphicon-plus"></i>&nbsp; Add Technology
+      </button>
+      <button class="btn btn-sm btn-primary pull-right myBtn2"
+              ng-click="cancelMultipleRecords('subject');toggleBtnEmp=!toggleBtnEmp;"
+              ng-show="toggleBtnProj">
+          <i class="glyphicon glyphicon-remove"></i>&nbsp; Cancel
+      </button>
+      <button class="btn btn-sm btn-danger pull-right myBtn2"
+              ng-click="deleteMultipleRecords('subject');toggleBtnEmp=!toggleBtnProj;"
+              ng-show="toggleBtnProj">
+          <i class="glyphicon glyphicon-trash"></i>&nbsp; Delete Marked
+      </button>
+
+      <div class="clearfix"></div>
+
+                <div class="panel-group" ng-repeat="x in subject | filter:searchTech" class="row">
+                <!-- First Panel -->
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                         <h4 class="panel-title"
+                             data-toggle="collapse"
+                             data-target="#Techcollapse{{$index}}" data-href='#Techcollapse{{$index}}'>
+                             {{$index + 1}}.&nbsp; {{x.subject}}
+                         </h4>
+                    </div>
+                    <div id="Techcollapse{{$index}}" class="panel-collapse collapse">
+                        <div class="panel-body">
+                          <div>
+                            <strong class="col-sm-6">Subject </strong><i class="col-sm-6">{{x.subject}}</i>
+                            <strong class="col-sm-6">Year </strong><i class="col-sm-6">{{x.year}}</i>
+                            <strong class="col-sm-6">Book Referal </strong><i class="col-sm-6">{{x.bookreferal}}</i>
+                            <strong class="col-sm-6">Staff </strong><i class="col-sm-6">{{x.staff}}</i>
+
+                              <button class="btn btn-sm btn-danger pull-right myBtn"
+                                      ng-click="deleteRecord('subject',x)">
+                                  <i class="glyphicon glyphicon-trash"></i>&nbsp; Delete
+                              </button>
+                              <button class="btn btn-sm btn-primary pull-right myBtn"
+                                      ng-click="openEditModal('subject',$index)">
+                                  <i class="glyphicon glyphicon-edit"></i>&nbsp; Edit
+                              </button>
+
+                          </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+    </div>
+  </div>
+</div>
+</div>
+
+
+
+<div id="editstaffTemplate" class="modal fade" role="dialog">
+  <div class="modal-dialog" style='left:0'>
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h3 class="modal-title">Update the record.</h3>
+      </div>
+      <div class="modal-body">
+        <form name="editStaffRecordForm">
+          <div class="form-group">
+            <label for="email">staff</label>
+            <input class="col-sm-8 form-control" ng-model="items.staff"/>
+          </div>
+          <div class="form-group">
+            <label for="email">dept</label>
+            <input class="col-sm-8 form-control" ng-model="items.dept"/>
+          </div>
+          <div class="form-group">
+            <label for="email">experience</label>
+            <input class="col-sm-8 form-control" ng-model="items.experience"/>
+          </div>
+          <div class="form-group">
+            <label for="email">designation</label>
+            <input class="col-sm-8 form-control" ng-model="items.designation"/>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="submit" class="btn btn-primary" ng-click="updateRecord()"><i
+                class="glyphicon glyphicon-ok-circle" ng-disabled="editStaffRecordForm.$invalid"></i> Update
+        </button>
+        <button class="btn btn-warning" ng-click="discardUpdate()"><i class="glyphicon glyphicon-remove-circle"></i>
+            Discard
+        </button>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- Modal -->
+<div id="addStudentTemplate" class="modal fade" role="dialog">
+  <div class="modal-dialog" style='left:0'>
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h3 class="panel-title">Add New Student Info</h3>
+      </div>
+      <div class="modal-body">
+        <form name="newStuRecordForm" role='form'>
+          <div class="form-group">
+            <label for="name">Student Name</label>
+            <input class="col-sm-8 form-control" ng-model="newEmp.name"/>
+          </div>
+          <div class="form-group">
+            <label for="stuid">Student Id </label>
+            <input class="col-sm-8 form-control" ng-model="newEmp.stuid"/>
+          </div>
+          <div class="form-group">
+            <label for="department">Deprtment</label>
+            <input class="col-sm-8 form-control" ng-model="newEmp.Deprtment"/>
+          </div>
+          <div class="form-group">
+            <label for="section">section</label>
+            <input class="col-sm-8 form-control" ng-model="newEmp.section"/>
+          </div>
+          <div class="form-group">
+            <label for="email">Email</label>
+            <input class="col-sm-8 form-control" ng-model="newEmp.email"/>
+          </div>
+          <div class="form-group">
+            <label for="phone">Phone</label>
+            <input class="col-sm-8 form-control" ng-model="newEmp.phone"/>
+          </div>
+          <div class="form-group">
+            <label for="dob">Date of Birth</label>
+            <input class="col-sm-8 form-control" ng-model="newEmp.dob"/>
+          </div>
+            <div class="clearfix breakSpace"></div>
+            <div class="modal-footer">
+            <button class="btn btn-sm btn-danger pull-right myBtn" ng-click="discardRecord()">
+                <i class="glyphicon glyphicon-remove"></i>&nbsp; Discard
+            </button>
+            <button class="btn btn-sm btn-primary pull-right myBtn" ng-click="commitRecord('Students', newEmp)"
+                    ng-disabled="newStuRecordForm.$invalid">
+                <i class="glyphicon glyphicon-ok"></i>&nbsp; Add Record
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div id="editStudentTemplate" class="modal fade" role="dialog">
+<div class="modal-dialog" style="left:0">
+<!-- Modal content-->
+<div class="modal-content">
+  <div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal">&times;</button>
+    <h4 class="modal-title">Modal Header</h4>
+  </div>
+  <div class="modal-body">
+    <form name="editStuRecordForm" role='form'>
+        <div class="form-group">
+          <label for="email">Name</label>
+          <input class="col-sm-8 form-control" ng-model="items.name" ng-model-options="{ updateOn: 'submit' }"/>
+        </div>
+        <div class="form-group">
+          <label for="email">Employee ID</label>
+          <input class="col-sm-8 form-control " ng-model="items.stuid" ng-model-options="{ updateOn: 'submit' }"/>
+        </div>
+        <div class="form-group">
+          <label for="email">Deprtment</label>
+          <input class="col-sm-8 form-control " ng-model="items.Deprtment" ng-model-options="{ updateOn: 'submit' }"/>
+        </div>
+        <div class="form-group">
+          <label for="email">section</label>
+          <input class="col-sm-8 form-control " ng-model="items.section" ng-model-options="{ updateOn: 'submit' }"/>
+        </div>
+        <div class="form-group">
+          <label for="email">Phone</label>
+          <input class="col-sm-8 form-control " ng-model="items.phone" ng-model-options="{ updateOn: 'submit' }"/>
+        </div>
+        <div class="form-group">
+          <label for="email">Date of Birth</label>
+          <input class="col-sm-8 form-control" ng-model="items.dob" ng-model-options="{ updateOn: 'submit' }"/>
+        </div>
+        <div class='clearfix'></div>
+        <div class="modal-footer updateModalFooter">
+            <input type="submit" class="btn btn-primary" ng-click="updateRecord()" ng-disabled="editStuRecordForm.$invalid"
+                   value="Update"/>
+            <!--</button>-->
+            <button class="btn btn-warning" ng-click="discardUpdate()"><i class="glyphicon glyphicon-remove-circle"></i>
+                Discard
+            </button>
+        </div>
+    </form>
+  </div>
+
+</div>
+
+</div>
+</div>
+
+<div id="editTechnologyTemplate" class="modal fade" role="dialog">
+  <div class="modal-dialog" style='left:0'>
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h3 class="modal-title">Update the record.</h3>
+      </div>
+      <div class="modal-body">
+        <form name="editSubRecordForm">
+          <div class="form-group">
+            <label for="email">Subject</label>
+            <input class="col-sm-8 form-control" ng-model="items.subject"/>
+          </div>
+          <div class="form-group">
+            <label for="email">Year</label>
+            <input class="col-sm-8 form-control" ng-model="items.year"/>
+          </div>
+          <div class="form-group">
+            <label for="email">Book Referal</label>
+            <input class="col-sm-8 form-control" ng-model="items.bookreferal"/>
+          </div>
+          <div class="form-group">
+            <label for="email">Staff</label>
+            <input class="col-sm-8 form-control" ng-model="items.staff"/>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="submit" class="btn btn-primary" ng-click="updateRecord()"><i
+                class="glyphicon glyphicon-ok-circle" ng-disabled="editSubRecordForm.$invalid"></i> Update
+        </button>
+        <button class="btn btn-warning" ng-click="discardUpdate()"><i class="glyphicon glyphicon-remove-circle"></i>
+            Discard
+        </button>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+
+<!--End Edit Modals -->
+<div id="addSubjectTemplate" class="modal fade" role="dialog">
+  <div class="modal-dialog" style='left:0'>
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h3 class="panel-title">Add a new Subject record</h3>
+      </div>
+      <form name="newSubRecordForm">
+      <div class="modal-body">
+          <div class="form-group">
+            <label for="email">Subject</label>
+            <input class="col-sm-8 form-control" ng-model="newSub.subject"/>
+          </div>
+          <div class="form-group">
+            <label for="email">Year</label>
+            <input class="col-sm-8 form-control" ng-model="newSub.year"/>
+          </div>
+          <div class="form-group">
+            <label for="email">Book Referal</label>
+            <input class="col-sm-8 form-control" ng-model="newSub.bookreferal"/>
+          </div>
+          <div class="form-group">
+            <label for="email">Staff</label>
+            <input class="col-sm-8 form-control" ng-model="newSub.staff"/>
+          </div>
+            <div class="clearfix breakSpace"></div>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-sm btn-danger pull-right myBtn" ng-click="discardRecord()">
+            <i class="glyphicon glyphicon-remove"></i>&nbsp; Discard
+        </button>
+        <button class="btn btn-sm btn-primary pull-right myBtn" ng-click="commitRecord('subject',newSub)"
+                ng-disabled="newSubRecordForm.$invalid">
+            <i class="glyphicon glyphicon-ok"></i>&nbsp; Add Record
+        </button>
+      </div>
+    </form>
+    </div>
+  </div>
+</div>
+
+
+
+
+<div id="addstaffTemplate" class="modal fade" role="dialog">
+  <div class="modal-dialog" style='left:0'>
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h3 class="panel-title">Add a new staff record</h3>
+      </div>
+      <form name="newStuRecordForm">
+      <div class="modal-body">
+          <div class="form-group">
+            <label for="email">staff</label>
+            <input class="col-sm-8 form-control" ng-model="newProj.staff"/>
+          </div>
+          <div class="form-group">
+            <label for="email">dept</label>
+            <input class="col-sm-8 form-control" ng-model="newProj.dept"/>
+          </div>
+          <div class="form-group">
+            <label for="email">experience</label>
+            <input class="col-sm-8 form-control" ng-model="newProj.experience"/>
+          </div>
+          <div class="form-group">
+            <label for="email">Designation</label>
+            <input class="col-sm-8 form-control" ng-model="newProj.designation"/>
+          </div>
+      <div class="modal-footer">
+        <button class="btn btn-sm btn-danger pull-right myBtn" ng-click="discardRecord()">
+            <i class="glyphicon glyphicon-remove"></i>&nbsp; Discard
+        </button>
+        <button class="btn btn-sm btn-primary pull-right myBtn" ng-click="commitRecord('staffs',newProj)"
+                ng-disabled="newStuRecordForm.$invalid">
+            <i class="glyphicon glyphicon-ok"></i>&nbsp; Add Record
+        </button>
+      </div>
+    </form>
+    </div>
+  </div>
+</div>
+
+
+
+
+<!--Adding record END-->
+
+
+<!--Updates / editing record START-->
+
+
+
+
+
+
+
+
+
+<!--Updates / editing record END-->
