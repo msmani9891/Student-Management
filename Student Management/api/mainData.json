@@ -13,82 +13,64 @@
     ],
     "Students": [
         {
-            "name": "Shiva Shankar",
-            "stuid": 1001,
-            "Deprtment": "Electronics & Communication Engineering",
-            "section": "A",
+            "name": "Shiva Shankar",                        
+            "bloodgroup": "B",
             "email": "shivashankar@test.in",
             "phone": 45258631556,
             "dob": "09-05-1991"
         },
         {
-            "name": "Rajabudheen HA",
-            "stuid": 1002,
-            "Deprtment": "Information Technology",
-            "section": "B",
+            "name": "Rajabudheen HA",            
+            "bloodgroup": "B+",
             "email": "rajabudheenha@test.in",
             "phone": 1234569870,
             "dob": "10-04-1991"
         },
         {
-            "name": "Akalyadevi Mariappan",
-            "stuid": 1003,
-            "Deprtment": "Electronics & Communication Engineering",
-            "section": "A",
+            "name": "Akalyadevi Mariappan",            
+            "bloodgroup": "A+",
             "email": "akalyadevi.mariappan@test.in",
             "phone": 78459632156,
             "dob": "05-02-1991"
         },
         {
-            "name": "Naveen Nagarajan",
-            "stuid": 1004,
-            "Deprtment": "Eletrical and Electronics Engineering",
-            "section": "A",
+            "name": "Naveen Nagarajan",            
+            "bloodgroup": "AB-",
             "email": "naveen.nagarajan@test.in",
             "phone": 85423668201,
             "dob": "29-01-1991"
         },
         {
-            "name": "Reshma Kisan",
-            "stuid": 1005,
-            "Deprtment": "Electronics & Communication Engineering",
-            "section": "A",
+            "name": "Reshma Kisan",            
+            "bloodgroup": "A+",
             "email": "reshma.kisan@test.in",
             "phone": 754236985,
             "dob": "04-05-1992"
         },
         {
-            "name": "Suresh Maharajan",
-            "stuid": 1006,
-            "Deprtment": "Information Technology",
-            "section": "A",
+            "name": "Suresh Maharajan",            
+            "bloodgroup": "B-",
             "email": "suresh.maharajan@test.in",
             "phone": 7423625961,
             "dob": "03-11-1990"
         },
         {
-            "name": "Anitha Jasmine",
-            "stuid": 1007,
-            "Deprtment": "Eletrical and Electronics Engineering",
-            "section": "B",
+            "name": "Anitha Jasmine",            
+            "bloodgroup": "B",
             "email": "anitha.jasmine@test.in",
             "phone": 9030043832,
             "dob": "01-01-1991"
         },
         {
-            "name": "Krishna Raju",
-            "stuid": 1008,
-            "Deprtment": "Information Technology",
-            "section": "A",
+            "name": "Krishna Raju",            
+            "bloodgroup": "B",
             "email": "krishna.raju@test.in",
             "phone": 7586624526,
             "dob": "04-10-1991"
         },
         {
-            "name": "Madhubala Suresh",
-            "stuid": 1009,
-            "Deprtment": "Electronics & Communication Engineering",
-            "section": "A",
+            "name": "Madhubala Suresh",            
+            "bloodgroup": "A-",
             "email": "madhubala.suresh@test.in",
             "phone": 1452668932,
             "dob": "03-08-1990"

@@ -16,7 +16,8 @@ var myApp = angular
         'ngRoute',
         'ngSanitize',
         'ngTouch',
-        'ui.bootstrap'
+        'ui.bootstrap',
+        'datepicker'
     ]);
 
 myApp.config(function ($routeProvider) {
@@ -48,6 +49,7 @@ myApp.run(["$rootScope", "$log", "$location", function ($rootScope, $log, $locat
         if ($location.url() == "/userPage" && $rootScope.showUserName == false) {
             $location.path("/");
         }
+        
 
     });
 }]);

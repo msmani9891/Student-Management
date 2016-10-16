@@ -1,5 +1,6 @@
 
 myApp.controller("navbarCtrl", ["$scope", "$rootScope", "$log", "$location", function ($scope, $rootScope, $log, $location,$http) {
+
     $rootScope.showUserName = false;
     $rootScope.signedInUser = "";
     $rootScope.currentPath = "";
@@ -14,6 +15,7 @@ myApp.controller("navbarCtrl", ["$scope", "$rootScope", "$log", "$location", fun
 
 myApp.controller("loginPageCtrl", ["$scope", "$rootScope", "$log", "$location", "$routeParams", "$http", "getDataFactory", function ($scope, $rootScope, $log, $location, $routeParams, $http, getDataFactory) {
 
+        
     $scope.selectedstaffs = {};
     $scope.selectedTechnologies = {};
     $scope.clickedStaySigned = "";
@@ -126,13 +128,13 @@ myApp.controller("loginPageCtrl", ["$scope", "$rootScope", "$log", "$location", 
 
     $scope.addNewRecord = function (str) {
         if (str == "Students") {
-            $scope.newEmp = [];
+            $scope.newContact = [];
             $("#addStudentTemplate").modal('show');
         } else if (str == "staffs") {
-            $scope.newEmp = [];
+            $scope.newContact = [];
             $("#addstaffTemplate").modal('show');
         } else if (str == "subject") {
-            $scope.newEmp = [];
+            $scope.newContact = [];
             $("#addSubjectTemplate").modal('show');
         }
     };
@@ -171,18 +173,14 @@ myApp.controller("loginPageCtrl", ["$scope", "$rootScope", "$log", "$location", 
         $scope.currentData = {};
         if (str == 'Students') {
             $scope.index = index;
-            var name = $scope.Students[index].name;
-            var stuid = $scope.Students[index].stuid;
-            var Deprtment = $scope.Students[index].Deprtment;
-            var section = $scope.Students[index].section;
+            var name = $scope.Students[index].name;            
+            var bloodgroup = $scope.Students[index].bloodgroup;
             var email = $scope.Students[index].email;
             var phone = $scope.Students[index].phone;
             var dob = $scope.Students[index].dob;
             $scope.currentData = {
-                name: name,
-                stuid: stuid,
-                Deprtment: Deprtment,
-                section: section,
+                name: name,                
+                bloodgroup: bloodgroup,
                 email: email,
                 phone: phone,
                 dob: dob

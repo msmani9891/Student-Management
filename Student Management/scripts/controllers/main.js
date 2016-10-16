@@ -7,6 +7,7 @@ angular.module('studentManagement')
       'AngularJS',
       'Karma'
     ];
+
   });
 
 
@@ -20,6 +21,7 @@ angular.module('studentManagement')
     describe('MainCtrl', function () {
         beforeEach(inject(function ($rootScope, $controller) {
             scope = $rootScope.$new();
+            $scope.today = moment().toDate();
             controller = $controller('MyCtrl', {
                 '$scope': scope,
                     'BasketNavigationService': {
