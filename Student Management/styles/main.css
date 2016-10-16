@@ -284,3 +284,6 @@
 .pointer{
     cursor:pointer;
 }
+.error-text{
+    color:red;
+}

@@ -6,7 +6,7 @@
     box-sizing: border-box;
     position: absolute;
     z-index: 10000;
-    min-width: 100%;
+    min-width: 50%;
 }
 .datepicker .picker * {
     box-sizing: inherit;

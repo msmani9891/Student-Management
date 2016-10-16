@@ -104,13 +104,13 @@
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal">&times;</button>
-        <h3 class="panel-title">Add New Student Info</h3>
+        <h3 class="panel-title">Add New Contact Info</h3>
       </div>
       <div class="modal-body">
         <form name="newStuRecordForm" role='form'>
           <div class="form-group">
-            <label for="name">Student Name</label>
-            <input class="col-sm-8 form-control" ng-model="newContact.name"/>
+            <label for="name">Contact Name</label>
+            <input class="col-sm-8 form-control" ng-model="newContact.name" required/>
           </div>
           <!-- <div class="form-group">
             <label for="stuid">Student Id </label>
@@ -122,20 +122,22 @@
           </div> -->
           <div class="form-group">
             <label for="section">Blood Group</label>
-            <input class="col-sm-8 form-control" ng-model="newContact.bloodgroup"/>
+            <input class="col-sm-8 form-control" ng-model="newContact.bloodgroup" required/>
           </div>
           <div class="form-group">
             <label for="dob">Date of Birth</label>
-            <input id="dob" class="col-sm-8 form-control" type="text" data-datepicker="{theme: 'flat'}" data-ng-model="newContact.dob"/>          
+            <input id="dob" class="col-sm-8 form-control" type="text" data-datepicker="{theme: 'flat'}" data-ng-model="newContact.dob" required/>          
             <!-- <input class="col-sm-8 form-control" ng-model="newContact.dob"/> -->
           </div>
           <div class="form-group">
             <label for="email">Email</label>
-            <input class="col-sm-8 form-control" ng-model="newContact.email"/>
+            <input class="col-sm-8 form-control" ng-model="newContact.email" required/>
           </div>
-          <div class="form-group">
+          <div class="form-group" ng-class="{'has-error': newContact.phone.$error.number}">
             <label for="phone">Phone</label>
-            <input class="col-sm-8 form-control" ng-model="newContact.phone"/>
+            <!-- <input class="col-sm-8 form-control" type='number'  ng-model="newContact.phone" required /> -->
+             <input type="text" class="col-sm-8 form-control" ng-max='10' name="nums" ng-model="newContact.phone" required ng-pattern="/^(\d)+$/" />
+      <p class="error-text" ng-show="newStuRecordForm.nums.$error.pattern">Please Type number and valid mobile number.</p> 
           </div>
           
             <div class="clearfix breakSpace"></div>
@@ -145,7 +147,7 @@
             </button>
             <button class="btn btn-sm btn-primary pull-right myBtn" ng-click="commitRecord('Students', newContact)"
                     ng-disabled="newStuRecordForm.$invalid">
-                <i class="glyphicon glyphicon-ok"></i>&nbsp; Add Record
+                <i class="glyphicon glyphicon-ok"></i>&nbsp; Add Record 
             </button>
           </div>
         </form>
@@ -167,21 +169,28 @@
     <form name="editStuRecordForm" role='form'>
         <div class="form-group">
           <label for="email">Name</label>
-          <input class="col-sm-8 form-control" ng-model="items.name" ng-model-options="{ updateOn: 'submit' }"/>
+          <input class="col-sm-8 form-control" ng-model="items.name" ng-model-options="{ updateOn: 'submit' }" required/>
         </div>    
         <div class="form-group">
           <label for="email">Blood Group</label>
-          <input class="col-sm-8 form-control " ng-model="items.bloodgroup" ng-model-options="{ updateOn: 'submit' }"/>
-        </div>
-        <div class="form-group">
-          <label for="email">Phone</label>
-          <input class="col-sm-8 form-control " ng-model="items.phone" ng-model-options="{ updateOn: 'submit' }"/>
+          <input class="col-sm-8 form-control " ng-model="items.bloodgroup" ng-model-options="{ updateOn: 'submit' }" required/>
         </div>
         <div class="form-group">
           <label for="email">Date of Birth</label>
           <!-- <input class="col-sm-8 form-control" ng-model="items.dob" ng-model-options="{ updateOn: 'submit' }"/> -->
-          <input id="dob" class="col-sm-8 form-control" type="text" data-datepicker="{theme: 'flat'}" data-ng-model="items.dob"/>
+          <input id="dob" class="col-sm-8 form-control" type="text" data-datepicker="{theme: 'flat'}" data-ng-model="items.dob" required/>
         </div>
+        <div class="form-group">
+            <label for="email">Email</label>
+            <input class="col-sm-8 form-control" type='email' ng-model="items.email" ng-model-options="{ updateOn: 'submit' }" required/>
+          </div>
+        <div class="form-group">
+          <label for="email">Phone</label>
+          <!-- <input class="col-sm-8 form-control" ng-pattern="regEx" ng-model="items.phone" ng-model-options="{ updateOn: 'submit' }" required/> -->
+          <input type="text" class="col-sm-8 form-control" ng-max='10' name="nums" ng-model="items.phone" ng-model-options="{ updateOn: 'submit' }" required ng-pattern="/^(\d)+$/" />
+      <p class="error-text" ng-show="editStuRecordForm.nums.$error.pattern">Please Type number and valid mobile number.</p> 
+        </div>
+        
         <div class='clearfix'></div>
         <div class="modal-footer updateModalFooter">
             <input type="submit" class="btn btn-primary" ng-click="updateRecord()" ng-disabled="editStuRecordForm.$invalid"

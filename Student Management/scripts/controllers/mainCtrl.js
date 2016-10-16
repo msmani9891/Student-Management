@@ -15,7 +15,7 @@ myApp.controller("navbarCtrl", ["$scope", "$rootScope", "$log", "$location", fun
 
 myApp.controller("loginPageCtrl", ["$scope", "$rootScope", "$log", "$location", "$routeParams", "$http", "getDataFactory", function ($scope, $rootScope, $log, $location, $routeParams, $http, getDataFactory) {
 
-        
+    
     $scope.selectedstaffs = {};
     $scope.selectedTechnologies = {};
     $scope.clickedStaySigned = "";
@@ -31,6 +31,7 @@ myApp.controller("loginPageCtrl", ["$scope", "$rootScope", "$log", "$location", 
     $scope.empOrderBy = "name";
     $scope.projOrderBy = "staffs";
     $scope.techOrderBy = "subject";
+    $scope.regEx="/^[0-9]{10,10}$/;";
 
     $scope.wholeData = getDataFactory.getWholeData();
     console.log("$scope.wholeData :: ", $scope.wholeData);
@@ -189,7 +190,7 @@ myApp.controller("loginPageCtrl", ["$scope", "$rootScope", "$log", "$location", 
             $scope.forDiscardEmpChange = $scope.Students;
             $scope.Students[index] = $scope.currentData;
             $("#editStudentTemplate").modal('show');
-            // $("#test").modal('show');
+            
         } else if (str == 'staffs') {
             var staff = $scope.staffs[index].staff;
             var dept = $scope.staffs[index].dept;
